@@ -1,10 +1,9 @@
+var mongoose = require('mongoose'),
+    bodyParser = require('body-parser'),
+    cors = require('cors'),
+    express = require('express'),
+    routes = require('./routes');
 
-
-var mongoose = require('mongoose');
-var bodyParser = require('body-parser');
-var cors = require('cors');
-var express = require('express'),
-  routes = require('./routes');
 var app = express();
 mongoose.connect('mongodb://127.0.0.1/appcreator');
 
@@ -17,27 +16,10 @@ app.use(cors());	//enable express to use CORS. You may want to disable/restrict 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());    
 app.use(express.static(__dirname + '/public'));
-
-// Routes
-
 app.get('/', routes.index);
 app.get('/partials/:name', routes.partials);
-
 app.use('/api', require('./routes/api'));
-
+// redirect all others to the index (HTML5 history)
 app.get('*', routes.index);
-
 // Start server
-
 app.listen(3000);
-
-
-
-
-
-
-
-
-
-
-
