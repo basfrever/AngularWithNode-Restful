@@ -1,6 +1,5 @@
 'use strict';
-var app = angular.module('app',[]);
-app.config(function($locationProvider, $routeProvider) {
+angular.module('app',['app.services']).config(function($locationProvider,$routeProvider) {
   // $locationProvider.html5Mode(true);
   $routeProvider
       .when('/',{ 
@@ -14,17 +13,15 @@ app.config(function($locationProvider, $routeProvider) {
     .otherwise({
       redirectTo:'/'
   });
-});
- 
-app.controller('carCtrl', function($scope,$http){
-    $http.get('/api/car').success(function(data) {
-      $scope.carsData = data[0];
-    }); 
+}).controller('carCtrl', function($scope,VehicleDetails){
     
-});
+    VehicleDetails.query({vehicle:'car'}, function(response){
+        $scope.carsData = response[0];
+    });
 
-app.controller('truckCtrl', function($scope,$http){
-    $http.get('/api/truck').success(function(data) {
-      $scope.truckData = data[0];
-    });    
+}).controller('truckCtrl', function($scope,VehicleDetails){
+    VehicleDetails.query({vehicle:'truck'}, function(response){
+        $scope.truckData = response[0];
+    });
+
 });
