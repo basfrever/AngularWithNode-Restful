@@ -60,9 +60,9 @@ angular.module('app',['app.services']).config(function($locationProvider,$routeP
 
 }).controller('truckCtrl', function($scope,VehicleDetails,$location){
     $scope.truckData=function(){
-            VehicleDetails.query({vehicle:'truck'}, function(response){
-        $scope.truckData = response;
-    });    
+        VehicleDetails.query({vehicle:'truck'}, function(response){
+            $scope.truckData = response;
+        });    
     };
     $scope.truckData();
     
@@ -70,15 +70,15 @@ angular.module('app',['app.services']).config(function($locationProvider,$routeP
         VehicleDetails.post({vehicle:'truck','name':$scope.name,'model':$scope.model,'company':$scope.company,'weightcapacity':$scope.yom}, function(response){
             $scope.ss = response;
             if($scope.ss){
-            $location.path('#/');
+                $location.path('#/');
             }
         });
     };
     
     $scope.edit=function(id){        
-    VehicleDetails.get({vehicle:'truck',entryId:id}, function(response){
-        $scope.truckd = response;
-    });
+        VehicleDetails.get({vehicle:'truck',entryId:id}, function(response){
+            $scope.truckd = response;
+        });
     };
     
     $scope.update=function(uid){     VehicleDetails.update({vehicle:'truck','name':$scope.truckd.name,'model':$scope.truckd.model,'company':$scope.truckd.company,'weightcapacity':$scope.truckd.weightcapacity,entryId:uid}, function(response){
@@ -88,11 +88,11 @@ angular.module('app',['app.services']).config(function($locationProvider,$routeP
         });    
     };
     
-        $scope.delete=function(id){        
-    VehicleDetails.remove({vehicle:'truck',entryId:id}, function(response){
-       $location.path('#/');
-        $scope.truckData();
-    });
+    $scope.delete=function(id){        
+        VehicleDetails.remove({vehicle:'truck',entryId:id}, function(response){
+            $location.path('#/');
+            $scope.truckData();
+        });
     };
 
 });
