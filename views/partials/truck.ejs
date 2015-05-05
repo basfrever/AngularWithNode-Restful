@@ -1,6 +1,29 @@
 <h3>Truck Details</h3>
 <hr>
-<p>Name :<span ng-bind="truckData.name"></span></p>
-<p>Model :<span ng-bind="truckData.model"></span></p>
-<p>company :<span ng-bind="truckData.company"></span></p>
-<p>weightcapacity :<span ng-bind="truckData.weightcapacity"></span></p>
+<table border="1">
+    <a href="#/addtruck">Add New</a>
+    <tr>
+        <th>Name</th>    
+        <th>Model</th>    
+        <th>Company</th>    
+        <th>WeightCapacity</th>
+        <th>Action</th>
+    </tr> 
+    <tr ng-repeat="t in truckData">
+    <td ng-bind="t.name"></td>
+    <td ng-bind="t.model"></td>
+    <td ng-bind="t.company"></td>
+    <td ng-bind="t.weightcapacity"></td> 
+    <td><span><a href="#/truck" ng-click="edit(t._id)">Edit</a></span>&nbsp;<span><a href="#/truck" ng-click="delete(t._id)">Delete</a></span></td>    
+    </tr>
+</table>
+<div ng-show="truckd">
+<di>
+<p>Name<span><input type="text" ng-model="truckd.name"></span></p>
+    <p>Model<span><input type="text" ng-model="truckd.model"></span></p>
+    <p>Company<span><input type="text" ng-model="truckd.company"></span></p>
+    <p>WeightCapacity<span><input type="text" ng-model="truckd.weightcapacity"></span></p>
+<input type="button" ng-click="update(truckd._id)" value="Update">
+</di>
+
+</div>
