@@ -13,7 +13,14 @@
     "cors": "^2.5.3",
     "express": "^4.12.3",
     "mongoose": "~3.8",
-     "ejs": ">= 0.0.0",
+    "ejs": ">= 0.0.0",
     "node-restful": "^0.1.18"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-concat": "^2.5.2",
+    "gulp-jshint": "^1.10.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.2.0"
   }
 }

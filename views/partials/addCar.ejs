@@ -1,8 +1,12 @@
 <h3>Enter Card Details</h3>
-<di>
-<p>Name<span><input type="text" ng-model="name"></span></p>
-    <p>Model<span><input type="text" ng-model="model"></span></p>
-    <p>Company<span><input type="text" ng-model="company"></span></p>
-    <p>YearOfManufacture<span><input type="text" ng-model="yom"></span></p>
-<input type="button" ng-click="add()" value="Add"
-</di>
+<div>
+    <form name="myForm" novalidate>
+<p>Name<span><input type="text" ng-model="name" name="name" required></span><span style="color:red" ng-show="myForm.name.$dirty && myForm.name.$invalid">
+  <span ng-show="myForm.name.$error.required">Username is required.</span>
+  </span></p>
+    <p>Model<span><input type="text" ng-model="model" required></span></p>
+    <p>Company<span><input type="text" ng-model="company" required></span></p>
+    <p>YearOfManufacture<span><input type="text" ng-model="yom" required></span></p>
+<input type="button" ng-click="add()" value="Add" ng-disabled="myForm.name.$dirty && myForm.name.$invalid">
+</form>
+</div>

@@ -14,7 +14,7 @@ app.set('view options', {
 });
 app.use(cors());	//enable express to use CORS. You may want to disable/restrict in production
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());    
+app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 app.get('/', routes.index);
 app.get('/partials/:name', routes.partials);
